@@ -1,11 +1,19 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Arrays;
 import java.util.Random;
+
 
 public class PuzzleJava{
     public static void main(String[] args) {
         // arraysum() ;
         // shufflearray();
+        // lettersarray();
+        // randomarray();
+        // sortRandomArray();
+        // randomString();
+        randomStringwords();
 
     }
 
@@ -39,13 +47,75 @@ public class PuzzleJava{
                 }
             }
 
-Create an array that contains all 26 letters of the alphabet (this array must have 26 values). 
-Shuffle the array and, after shuffling, display the last letter from the array. 
-Have it also display the first letter of the array.
-    If the first letter in the array is a vowel, have it display a message.
 
-            
-     
-   
+public static void lettersarray()  {
+   ArrayList<Character> letters = new ArrayList();
+   ArrayList<Character> vowels = new ArrayList();
+
+    for (char i='a' ; i<='z' ; i++){
+        letters.add(i);
+
+    }
+        
+        Collections.shuffle(letters);
+        // System.out.println(letters);
+        System.out.println(letters.get(letters.size()-1));
+        System.out.println(letters.get(0));
+        
+
+        vowels.add('i');
+        vowels.add('e');
+        vowels.add('u');
+        vowels.add('a');
+        vowels.add('o');
+
+        if (vowels.contains(letters.get(0))){
+           System.out.println("first character is a vowel");
+        }
+}
+
+public static void randomarray(){
+    Random r = new Random();
+    int [] array = {1,2,3,4,5,6,7,8,9,10};
+    for(int i=0; i<array.length; i++){
+        array[i] = r.nextInt(100-55) + 55;
+        System.out.println(array[i]);
+    } 
+}
+public static void sortRandomArray(){
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    Random r = new Random();
+    for(int i=0; i<10 ; i++){
+        numbers.add(r.nextInt(100-55) + 55);
+    } 
+   Collections.sort(numbers);
+   System.out.println(numbers);
+   System.out.println(String.format("The Minimum is %d",numbers.get(0)));
+}
+public static void randomString(){
+    String [] array ={"a","b","c","t","t"};
+    Random r = new Random();
+    String y="";
+    for (int i = 0; i < array.length; i++) {
+        array[i]=String.valueOf((char)(r.nextInt(26) + 'a'));
+        y=y+array[i];
+    } 
+   System.out.println(y);
+}
+public static void randomStringwords(){
+    ArrayList<String> words = new ArrayList<String>();
+    Random r = new Random();
+    String y="";
+    for (int i = 0; i <10; i++) {
+        for (int j=0; j<5; j++){
+        y+=String.valueOf((char)(r.nextInt(26) + 'a'));
+        }
+        words.add(y);
+        y="";
+    } 
+   System.out.println(words);
+}
+
+
 
 }
