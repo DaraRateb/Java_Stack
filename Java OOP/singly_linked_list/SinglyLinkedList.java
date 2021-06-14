@@ -1,9 +1,35 @@
 public class SinglyLinkedList {
     public Node head;
     public SinglyLinkedList() {
-        // your code here
+        this.head=null;
     }
-    // SLL methods go here. As a starter, we will show you how to add a node to the list.
+    
+    public boolean isEmpty(){
+        return this.head==null;
+    }
+    
+    public Integer remove() {
+        Node current = this.head;
+        int todelete;
+
+        if(isEmpty()){
+            return null;
+        }
+        //decide if this node is the last one
+        if(head.next == null) {
+            todelete = head.value;
+            head = null;
+        }
+
+        while(current.next.next != null) {
+            current = current.next;
+        }
+        todelete = current.next.value;
+        current.next = null;
+        return todelete;
+    }
+
+
     public void add(int value) {
         Node newNode = new Node(value);
         if(head == null) {
@@ -16,4 +42,17 @@ public class SinglyLinkedList {
             runner.next = newNode;
         }
     }    
+
+
+    public void printValues() {
+        if(isEmpty()) {
+            System.out.println("List is empty");
+        }
+        Node current = this.head;
+        while(current.next != null) {
+            String str = String.format("Node Value: %s , Next Value: %s", current.value, current.next.value);
+            System.out.println(str);
+            current = current.next;
+        }
+    }
 }
