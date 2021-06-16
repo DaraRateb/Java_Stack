@@ -7,7 +7,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script type="text/javascript" src="js/time.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 <title>Time</title>
+
 </head>
 <body>
 
