@@ -38,23 +38,10 @@ private final BookRepository bookRepository;
         bookRepository.deleteById(id);
     }
     
-    public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
-    	   Optional<Book> optionalBook = bookRepository.findById(id);
-    	   if (optionalBook.isPresent()) {
-    		   Book update=optionalBook.get();
-    		    update.setTitle(title);
-    		    update.setDescription(desc);
-    		    update.setLanguage(lang);
-    		    update.setNumberOfPages(numOfPages);
-
-
-    		return bookRepository.save(update);
-    		}else {
-    		    return null;
-    		    }
-    	   }
+    public Book updateBook(Book book) {
+    	 return bookRepository.save(book);
 }
-	
+}
 	
 
 
