@@ -48,8 +48,8 @@ private final BookRepository bookRepository;
     		    update.setNumberOfPages(numOfPages);
 
 
-    		return bookRepository.save(update);}
-    		else {
+    		return bookRepository.save(update);
+    		}else {
     		    return null;
     		    }
     	   }
