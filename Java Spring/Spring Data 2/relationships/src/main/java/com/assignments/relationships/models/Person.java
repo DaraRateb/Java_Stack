@@ -2,11 +2,16 @@ package com.assignments.relationships.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +39,12 @@ public class Person {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Person(String firstName, String lastName, License license) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.license = license;
 	}
 
 	public String getFirstName() {
@@ -75,7 +86,14 @@ public class Person {
 	public void setLicense(License license) {
 		this.license = license;
 	}
-	
+	@PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 	
 	
 }
